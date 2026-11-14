@@ -1,4 +1,4 @@
-# Portare in Wi-Fi una Samsung Xpress M2675F con Raspberry Pi Zero 2 W
+# Mettere il Wi-Fi ad una Samsung Xpress M2675F grazie a Raspberry Pi Zero 2 W
 
 Un Raspberry Pi esterno fa da server per una multifunzione USB. La stampante alimenta il Pi, che entra nella rete Wi-Fi di casa e avvia automaticamente CUPS per la stampa e scanservjs per lo scanner. La modifica è stata provata su una **SL-M2675F/SEE**, con alimentatore **KINGBIRD-V2-SEC, revisione 0.2**. Se vuoi realizzare soltanto la parte di rete, alimenta il Pi con un alimentatore esterno adatto e passa direttamente al punto 2.
 
