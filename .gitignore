@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+*.pcap*
+user-data
+network-config
+prova*.png
