@@ -2,6 +2,8 @@
 
 Un Raspberry Pi esterno fa da server per una multifunzione USB. La stampante alimenta il Pi, che entra nella rete Wi-Fi di casa e avvia automaticamente CUPS per la stampa e scanservjs per lo scanner. La modifica è stata provata su una **SL-M2675F/SEE**, con alimentatore **KINGBIRD-V2-SEC, revisione 0.2**. Se vuoi realizzare soltanto la parte di rete, alimenta il Pi con un alimentatore esterno adatto e passa direttamente al punto 2.
 
+**Per riprodurre tutto dall’inizio seguire [GUIDA-COMPLETA.md](GUIDA-COMPLETA.md)**. Comprende installazione della microSD da Windows, configurazione manuale cloud-init, avvio SSH, installazione completa, spiegazione del problema RAM, comandi di ottimizzazione, collaudo a 600 dpi, download, protezione SD e ripristino.
+
 | Funzione | Riscontro sull’esemplare |
 |---|---|
 | Scanner USB e web su Raspberry | Acquisizioni dal vetro verificate in grigio a 100 dpi e a colori a 150 e 600 dpi. JPEG 600 dpi RGB di 5102 × 7136 pixel, 4,19 MB. |
@@ -105,7 +107,7 @@ lpstat -p Samsung-M2675F
 sudo vcgencmd get_throttled
 ```
 
-Sul banco: root `overlay` con base ext4 in sola lettura e modifiche in RAM, boot `ro`, nessuno swap attivo, tre servizi attivi, coda abilitata e `throttled=0x0`. Ripeti l’ultimo controllo dopo una stampa e una scansione. Il risultato copre il periodo dall’ultimo avvio.
+Sul banco dopo le ottimizzazioni: root `overlay` con base ext4 in sola lettura e modifiche in RAM, boot `ro`, swap compresso `/dev/zram0` da 384 MiB senza appoggio sulla SD, tre servizi attivi, coda abilitata e `throttled=0x0`. Ripeti l’ultimo controllo dopo una stampa e una scansione. Il risultato copre il periodo dall’ultimo avvio.
 
 Le scritture temporanee, i lavori pendenti e i file acquisiti possono sparire allo spegnimento. Attendi la fine delle operazioni e salva i documenti sul client. Per manutenzione permanente disattiva entrambe le protezioni, riavvia, applica e prova le modifiche, quindi riattiva le protezioni e riavvia. Conserva una copia privata della microSD a sistema arrestato e prova il ripristino su una seconda scheda. L’overlay riduce le scritture e il rischio di corruzione; la continuità del lavoro durante un’interruzione richiederebbe alimentazione di riserva. [Documentazione Raspberry Pi](https://www.raspberrypi.com/documentation/computers/configuration.html#enable-or-disable-overlay-file-system)
 
