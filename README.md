@@ -107,6 +107,13 @@ Sul banco: root `overlay` con base ext4 in sola lettura e modifiche in RAM, boot
 
 Le scritture temporanee, i lavori pendenti e i file acquisiti possono sparire allo spegnimento. Attendi la fine delle operazioni e salva i documenti sul client. Per manutenzione permanente disattiva entrambe le protezioni, riavvia, applica e prova le modifiche, quindi riattiva le protezioni e riavvia. Conserva una copia privata della microSD a sistema arrestato e prova il ripristino su una seconda scheda. L’overlay riduce le scritture e il rischio di corruzione; la continuità del lavoro durante un’interruzione richiederebbe alimentazione di riserva. [Documentazione Raspberry Pi](https://www.raspberrypi.com/documentation/computers/configuration.html#enable-or-disable-overlay-file-system)
 
+## Pannello di stato e download automatico
+
+La personalizzazione in `pi-status.js` e `web-panel.js` mostra ogni 15 secondi memoria disponibile, temperatura e dimensione totale dei documenti sul Pi. Dopo una nuova scansione il browser richiedente riceve il file completo, avvia il download e chiede al server di cancellare la copia e la miniatura. Se il trasferimento fallisce, il file rimane sul server. Il pulsante «Salva di nuovo sul dispositivo» conserva una copia nel browser per ripetere il salvataggio anche dopo la cancellazione dal Pi. Ricaricare o chiudere la pagina perde questa copia. Safari e altri browser possono richiedere di autorizzare i download. Verificare il documento in Download prima di chiudere la pagina.
+
+Per applicare il pannello a scanservjs 3.x, copiare i tre file `pi-status.js`, `web-panel.js` e `install-web-panel.py` nella stessa directory sul Pi, quindi eseguire `sudo python3 install-web-panel.py` e `sudo systemctl restart scanservjs`. Con overlayroot occorre salvare i quattro file installati nella configurazione di base oppure eseguire l’installazione nella fase di manutenzione con protezione disabilitata. Un aggiornamento scanservjs può richiedere di riapplicare il pannello.
+
 ## Provenienza
 
 Il file `samsung-splix-2.0.2.drv` deriva da `ppd/samsung.drv.in` con le definizioni `#import` espanse dal rilascio SpliX 2.0.2. Mantiene gli avvisi degli autori; la licenza upstream è in [licenze/SpliX-COPYING](licenze/SpliX-COPYING). [Sorgenti del rilascio](https://github.com/OpenPrinting/splix/releases/tag/2.0.2) · [scanservjs](https://github.com/sbs20/scanservjs)
+
