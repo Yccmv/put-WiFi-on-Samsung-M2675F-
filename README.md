@@ -4,10 +4,12 @@ Un Raspberry Pi esterno fa da server per una multifunzione USB. La stampante ali
 
 | Funzione | Riscontro sull’esemplare |
 |---|---|
-| Scanner USB su Raspberry | Foglio acquisito dal vetro a 100 dpi, grigio. Il PNG di 832 × 1189 pixel è stato aperto su Windows. |
+| Scanner USB e web su Raspberry | Acquisizioni dal vetro verificate in grigio a 100 dpi e a colori a 150 e 600 dpi. JPEG 600 dpi RGB di 5102 × 7136 pixel, 4,19 MB. |
 | Server di stampa | Coda IPP associata alla Samsung USB. Un PDF inviato da Windows è entrato in coda. La prima pagina su carta rimane da verificare dopo il ripristino del toner. |
 | Stato consumabili | Con cartuccia rimossa il Pi vedeva un lavoro in elaborazione. La risposta IPP non riportava livello toner o causa dell’arresto. |
-| Server dopo il riavvio | CUPS, Avahi e scanservjs attivi. Restano da provare scansione dal browser, stampa da Android e AirPrint da iPhone. |
+| Server dopo il riavvio | CUPS, Avahi, scanservjs e pannello di stato verificati. Stampa da Android e AirPrint da iPhone ancora da collaudare. |
+
+I risultati aggiornati sono in [COLLAUDO.md](COLLAUDO.md). Le impostazioni per memoria compressa, conversione a 600 dpi, avvio senza desktop e pulizia automatica sono riproducibili con [ottimizza-pi.sh](ottimizza-pi.sh), dopo l’installazione del server e durante la manutenzione con protezione SD temporaneamente disabilitata.
 
 ## 1. Alimentazione e cablaggio
 
